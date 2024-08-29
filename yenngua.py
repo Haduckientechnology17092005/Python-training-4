@@ -2,17 +2,12 @@ def find_saddle_points(matrix):
     saddle_points = []
     num_rows = len(matrix)
     num_cols = len(matrix[0]) if num_rows > 0 else 0
-    
     for i in range(num_rows):
-        # Tìm phần tử lớn nhất trong hàng thứ i
         max_value = max(matrix[i])
-        max_indices = [j for j in range(num_cols) if matrix[i][j] == max_value]
-        
+        max_indices = [j for j in range (num_cols) if matrix[i][j] == max_value]
         for j in max_indices:
-            # Kiểm tra xem phần tử này có phải là phần tử nhỏ nhất trong cột j không
-            if all(matrix[k][j] >= matrix[i][j] for k in range(num_rows)):
+            if(all(matrix[k][j] >= matrix[i][j] for k in range(num_rows))):
                 saddle_points.append((i, j))
-    
     return saddle_points
 
 # Ma trận bạn cung cấp
