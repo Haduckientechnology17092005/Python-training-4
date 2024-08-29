@@ -1,29 +1,17 @@
 def is_magic_square(matrix):
     n = len(matrix)
-    
-    # Tính tổng của đường chéo chính
+    sum_diag1 = sum_diag2 = sum_row = sum_col = 0
     sum_diag1 = sum(matrix[i][i] for i in range(n))
-    
-    # Tính tổng của đường chéo phụ
     sum_diag2 = sum(matrix[i][n-i-1] for i in range(n))
-    
-    # Kiểm tra xem hai đường chéo có cùng tổng không
     if sum_diag1 != sum_diag2:
         return False
-    
-    # Kiểm tra từng hàng và từng cột
     for i in range(n):
         sum_row = sum(matrix[i])
         sum_col = sum(matrix[j][i] for j in range(n))
-        
-        # Kiểm tra xem tổng của hàng và cột có bằng với tổng của đường chéo chính không
-        if sum_row != sum_diag1 or sum_col != sum_diag1:
+        if sum_row != sum_col:
             return False
-    
-    # Nếu tất cả các điều kiện trên đều thỏa mãn, thì đây là ma phương
     return True
 
-# Ví dụ về ma trận bậc lẻ
 n = int(input("Enter the size of the matrix: "))
 matrix = []
 def input_matrix(n):
